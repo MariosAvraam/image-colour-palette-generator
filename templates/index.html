@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image</title>
+    <style>
+        .color-box {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Upload an image to get the top 10 colors:</h3>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*">
+    <input type="submit" value="Upload">
+</form>
+
+{% if colors %}
+<h4>Top 10 Colors:</h4>
+<div>
+    {% for color in colors %}
+    <div class="color-box" style="background-color: {{ color }};"></div>
+    {% endfor %}
+</div>
+{% endif %}
+
+</body>
+</html>
