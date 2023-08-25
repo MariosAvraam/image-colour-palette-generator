@@ -31,14 +31,14 @@
         {% if uploaded_image_path %}
         <div class="text-center mt-5">
           <h4>Uploaded Image:</h4>
-          <img src="{{ url_for('static', filename=uploaded_image_path) }}" alt="Uploaded Image" class="img-fluid">
+          <img src="/static/{{ uploaded_image_path }}" alt="Uploaded Image" class="img-fluid" style="max-height: 300px;">
         </div>
         {% endif %}
       </div>
     </div>
 
     {% if colors %}
-    <div class="text-center mt-5">
+    <div class="text-center mt-5" style="margin-bottom: 100px;">
       <h4>Top 10 Colors:</h4>
       <div class="d-flex justify-content-center flex-wrap">
         {% for color in colors %}
