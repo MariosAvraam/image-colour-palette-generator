@@ -13,6 +13,7 @@
       /* Adding a border */
       position: relative;
       /* Positioning context for the tooltip */
+      cursor: pointer;
     }
 
     .color-tooltip {
@@ -27,6 +28,11 @@
       border-radius: 3px;
       white-space: nowrap;
       margin-top: 5px;
+    }
+
+    .color-tooltip::after {
+      content: 'Click to copy';
+      display: block;
     }
 
     .color-box:hover .color-tooltip {
@@ -48,15 +54,28 @@
   <h4>Top 10 Colors:</h4>
   <div>
     {% for color in colors %}
-    <div class="color-box" style="background-color: {{ color }};" onclick="navigator.clipboard.writeText('{{ color }}')">
+    <div class="color-box" style="background-color: {{ color }};" onclick="copyColor('{{ color }}', this)">
       <div class="color-tooltip">
-        {{ color }}
+        {{ color }} - Click to copy
       </div>
     </div>
     {% endfor %}
 
+
   </div>
   {% endif %}
+
+  <script>
+    function copyColor(hexColor, element) {
+      navigator.clipboard.writeText(hexColor).then(function() {
+        var tooltip = element.querySelector('.color-tooltip');
+        tooltip.textContent = 'Copied!';
+        setTimeout(function() {
+          tooltip.textContent = hexColor + ' - Click to copy';
+        }, 1500);
+      });
+    }
+  </script>
 
 </body>
 
