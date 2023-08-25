@@ -11,9 +11,9 @@ Extract the top 10 dominant colors from any uploaded image using this simple Fla
 ## Installation
 
 1. Clone the repository:
-\`\`\`
-git clone <your-repo-link>
-\`\`\`
+```
+git clone https://github.com/MariosAvraam/image-colour-palette-generator.git
+```
 
 2. Navigate to the project directory:
 \`\`\`
