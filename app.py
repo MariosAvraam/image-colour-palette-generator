@@ -1,11 +1,11 @@
 import os
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import Flask, request, render_template
 from utils import allowed_file, save_file
 from image_processing import get_top_colors
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Check if the UPLOAD_FOLDER exists, if not, create it
@@ -35,7 +35,7 @@ def upload_image():
 
         if file and allowed_file(file.filename):
             filepath = save_file(file, app.config['UPLOAD_FOLDER'])
-            uploaded_image_path = filepath
+            uploaded_image_path = os.path.join('uploads', os.path.basename(filepath)).replace('\\', '/')
             colors = get_top_colors(filepath)
         else:
             message = "Invalid file type. Please upload an image."
