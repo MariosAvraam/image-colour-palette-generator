@@ -2,6 +2,8 @@
 
 Extract the top 10 dominant colors from any uploaded image using this simple Flask-based web application.
 
+![Screenshot of website](static/images/10_colors_image.jpg)
+
 ## Features
 
 - Easy to use: Just upload an image and see the results.
